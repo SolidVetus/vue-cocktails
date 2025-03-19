@@ -1,0 +1,63 @@
+@import url('./variables.css');
+@import url('./element-plus.css');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  font-size: 16px;
+  font-family: 'Raleway', 'Arial', sans-serif;
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.info {
+  max-height: 674px;
+  padding-top: 80px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.title::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 3px;
+  margin: 32px auto 0;
+  background-color: var(--accent);
+}
+
+.instructions {
+  width: 516px;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0 auto;
+  padding-right: 10px;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.1em;
+  color: var(--textMuted);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

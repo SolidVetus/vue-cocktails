@@ -1,0 +1,9 @@
+:root {
+  --el-fill-color-blank: var(--background);
+  /* --el-fill-color-light: var(--background); */
+  --el-fill-color: var(--background);
+  --el-fill-color-overlay: var(--background);
+  --el-select-dropdown-bg-color: var(--background);
+  /* --el-text-color-regular: var(--text); */
+  --el-text-color-placeholder: var(--textMuted);
+}
