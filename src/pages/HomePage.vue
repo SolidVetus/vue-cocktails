@@ -1,7 +1,7 @@
 <template>
   <app-layout :backFunc="removeIngredient" :is-back-button-visible="!!ingredient">
     <div class="wrapper">
-      <div v-if="!ingredients || !cocktails || !ingredient" class="info">
+      <div v-if="!ingredient" class="info">
         <div class="title">Choose your drink</div>
         <div class="select-wrapper">
           <el-select
@@ -11,7 +11,7 @@
             size="large"
             filterable
             allow-create
-            @change="getCocktails"
+            @change="rootStore.refresh"
           >
             <el-option
               v-for="item in ingredients"
@@ -46,16 +46,10 @@
 import { storeToRefs } from 'pinia'
 import CocktailThumb from '../components/CocktailThumb.vue'
 import AppLayout from '../components/AppLayout.vue'
-import { useRootStore } from '../stores/root'
+import { useRootStore } from '../stores/query.js'
 
 const rootStore = useRootStore()
-const { ingredients, ingredient, cocktails } = storeToRefs(rootStore)
-
-rootStore.getIngredients()
-
-const getCocktails = () => {
-  rootStore.getCocktails(ingredient.value)
-}
+const { ingredient, ingredients, cocktails } = storeToRefs(rootStore)
 
 const removeIngredient = () => {
   rootStore.setIngredient(null)
