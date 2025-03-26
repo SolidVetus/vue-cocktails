@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useQuery } from '@pinia/colada'
 import axios from 'axios'
 import { INGREDIENTS_URL, COCKTAILS_BY_INGREDIENT_URL } from '../constants'
@@ -13,18 +13,20 @@ export const useRootStore = defineStore('root', () => {
       const { data } = await axios.get(INGREDIENTS_URL)
       return data?.drinks || []
     },
-    immediate: true,
+    onError: (err) => console.error('Ошибка загрузки ингредиентов:', err),
   })
 
-  const { data: cocktails, refresh } = useQuery({
-    key: () => ['cocktails', { ingredient: ingredient.value }],
+  const cocktailsKey = computed(() => ['cocktails', { ingredient: ingredient.value }])
+
+  const { data: cocktails } = useQuery({
+    key: cocktailsKey,
     query: async () => {
       if (ingredient.value) {
         const { data } = await axios.get(`${COCKTAILS_BY_INGREDIENT_URL}${ingredient.value}`)
         return data?.drinks || []
       }
     },
-    enabled: !!ingredient.value,
+    onError: (err) => console.error('Ошибка загрузки коктейлей:', err),
   })
 
   const setIngredient = (val) => {
@@ -36,6 +38,5 @@ export const useRootStore = defineStore('root', () => {
     ingredient,
     cocktails,
     setIngredient,
-    refresh,
   }
 })
