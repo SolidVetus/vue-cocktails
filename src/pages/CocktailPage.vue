@@ -48,6 +48,7 @@ const mappedIngredients = computed(() => {
 const getCocktail = async () => {
   const data = await axios.get(`${COCKTAIL_BY_ID_URL}${cocktailId.value}`)
   cocktail.value = data?.data?.drinks[0]
+  console.log(cocktail.value)
 }
 
 onMounted(() => getCocktail())

@@ -29,7 +29,6 @@
       </div>
       <div v-else class="info">
         <div class="title">COCKTAILS WITH {{ ingredient }}</div>
-        <div class="line"></div>
         <ul class="cocktails">
           <cocktail-thumb
             v-for="cocktail in cocktails"
