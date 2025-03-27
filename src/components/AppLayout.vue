@@ -11,7 +11,13 @@
           class="back"
           @click="goBack"
         />
-        <el-button class="btn" @click="goForRandomCocktail">Get random cocktail</el-button>
+        <el-button class="btn" @click="goForRandomCocktail">{{
+          $t('get_random_cocktail')
+        }}</el-button>
+        <div>
+          <button @click="switchLanguage('en')">English</button>
+          <button @click="switchLanguage('ru')">Русский</button>
+        </div>
       </div>
       <slot></slot>
     </div>
@@ -23,6 +29,13 @@ import { Back } from '@element-plus/icons-vue'
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ROUTES_PATHS } from '../constants'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+
+const switchLanguage = (lang) => {
+  locale.value = lang
+}
 
 const props = defineProps({
   imgUrl: {
