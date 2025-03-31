@@ -3,16 +3,5 @@
   "choose_ingredient": "Choose main ingredient",
   "cocktails_with": "COCKTAILS WITH {ingredient}",
   "cocktails_diclaimer": "Try our delicious cocktail recipes for every occasion. Find delicious cocktail recipes by ingredient through our cocktail generator.",
-  "get_random_cocktail": "Get random cocktail",
-  "cocktail": {
-    "instructions": "Instructions",
-    "ingredients": "Ingredients",
-    "measurements": {
-      "ml": "ml",
-      "oz": "oz",
-      "cup": "cup",
-      "tbsp": "tbsp",
-      "tsp": "tsp"
-    }
-  }
+  "get_random_cocktail": "Get random cocktail"
 }

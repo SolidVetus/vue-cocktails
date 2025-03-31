@@ -28,7 +28,7 @@
               </swiper-slide>
             </swiper>
           </ul>
-          <div class="instructions">{{ cocktail.strInstructions }}</div>
+          <div class="instructions">{{ instructions }}</div>
         </div>
       </div>
     </app-layout>
@@ -39,11 +39,13 @@
 import axios from 'axios'
 import { ref, computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import { useI18n } from 'vue-i18n'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import AppLayout from '../components/AppLayout.vue'
 import { COCKTAIL_RANDOM, INGREDIENT_PIC } from '../constants/api.js'
 
+const { locale } = useI18n()
 const cocktail = ref([])
 
 const mappedIngredients = computed(() => {
@@ -57,6 +59,11 @@ const mappedIngredients = computed(() => {
     ingredients.push(ingredient)
   }
   return ingredients
+})
+
+const instructions = computed(() => {
+  const langKey = locale.value.toUpperCase()
+  return cocktail.value[`strInstructions${langKey}`] || cocktail.value.strInstructions
 })
 
 const getCocktail = async () => {

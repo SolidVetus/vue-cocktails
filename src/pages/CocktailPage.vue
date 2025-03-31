@@ -10,7 +10,7 @@
               <template v-if="item.measure">| {{ item.measure }}</template>
             </div>
           </div>
-          <div class="instructions">{{ cocktail.strInstructions }}</div>
+          <div class="instructions">{{ instructions }}</div>
         </div>
       </div>
     </app-layout>
@@ -20,11 +20,13 @@
 <script setup>
 import axios from 'axios'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { ref, computed, onMounted } from 'vue'
 import AppLayout from '../components/AppLayout.vue'
 import { COCKTAIL_BY_ID_URL } from '../constants/'
-import { ref, computed, onMounted } from 'vue'
 
 const route = useRoute()
+const { locale } = useI18n()
 
 const cocktail = ref([])
 
@@ -45,10 +47,14 @@ const mappedIngredients = computed(() => {
   return ingredients
 })
 
+const instructions = computed(() => {
+  const langKey = locale.value.toUpperCase()
+  return cocktail.value[`strInstructions${langKey}`] || cocktail.value.strInstructions
+})
+
 const getCocktail = async () => {
   const data = await axios.get(`${COCKTAIL_BY_ID_URL}${cocktailId.value}`)
   cocktail.value = data?.data?.drinks[0]
-  console.log(cocktail.value)
 }
 
 onMounted(() => getCocktail())

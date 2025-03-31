@@ -64,10 +64,13 @@ const removeIngredient = () => {
 .select-wrapper {
   text-align: center;
   padding-top: 50px;
+  width: auto;
 }
 
 .select {
-  width: 220px;
+  width: auto;
+  min-width: 220px;
+  max-width: 100%;
 }
 
 .text {

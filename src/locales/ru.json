@@ -1,18 +1,7 @@
 {
   "choose_drink": "Выберите напиток",
   "choose_ingredient": "Выберите основной ингредиент",
-  "cocktails_with": "Коктейли с {ingredient}",
+  "cocktails_with": "Коктейли с ингредиентом: {ingredient}",
   "cocktails_diclaimer": "Попробуйте наши вкусные рецепты коктейлей на любой случай. Найдите коктейли по ингредиентам с помощью нашего генератора.",
-  "get_random_cocktail": "Случайный коктейль",
-  "cocktail": {
-    "instructions": "Инструкция",
-    "ingredients": "Ингредиенты",
-    "measurements": {
-      "ml": "мл",
-      "oz": "унции",
-      "cup": "чашка",
-      "tbsp": "ст. ложка",
-      "tsp": "ч. ложка"
-    }
-  }
+  "get_random_cocktail": "Случайный коктейль"
 }
