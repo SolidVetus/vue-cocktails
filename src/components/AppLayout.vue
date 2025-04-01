@@ -64,7 +64,7 @@ if (savedLang) {
 const props = defineProps({
   imgUrl: {
     type: String,
-    default: '/src/assets/img/bg-1.jpg',
+    default: '/bg-1.jpg',
   },
   backFunc: {
     type: Function,
