@@ -75,16 +75,16 @@ const props = defineProps({
   },
 })
 
-const route = useRoute()
+// const route = useRoute()
 const router = useRouter()
 
-const routeName = computed(() => route.name)
+// const routeName = computed(() => route.name)
 
 const goForRandomCocktail = () => {
   router.push(ROUTES_PATHS.COCKTAIL_RANDOM)
-  if (routeName.value === ROUTES_PATHS.COCKTAIL_RANDOM) {
-    router.go()
-  }
+  // if (routeName.value === ROUTES_PATHS.COCKTAIL_RANDOM) {
+  //   router.go()
+  // }
 }
 
 const goBack = () => {
