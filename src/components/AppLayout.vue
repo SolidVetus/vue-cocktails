@@ -40,6 +40,8 @@ import { ROUTES_PATHS } from '../constants'
 const { locale } = useI18n()
 const selectedLanguage = ref(locale.value)
 
+const emits = defineEmits(['slot-key'])
+
 const languages = [
   { code: 'en', name: 'English', flag: '🇬🇧' },
   { code: 'ru', name: 'Русский', flag: '🇷🇺' },
@@ -75,16 +77,16 @@ const props = defineProps({
   },
 })
 
-// const route = useRoute()
+const route = useRoute()
 const router = useRouter()
 
-// const routeName = computed(() => route.name)
+const routeName = computed(() => route.name)
 
 const goForRandomCocktail = () => {
   router.push(ROUTES_PATHS.COCKTAIL_RANDOM)
-  // if (routeName.value === ROUTES_PATHS.COCKTAIL_RANDOM) {
-  //   router.go()
-  // }
+  if (routeName.value === ROUTES_PATHS.COCKTAIL_RANDOM) {
+    emits('slot-key')
+  }
 }
 
 const goBack = () => {

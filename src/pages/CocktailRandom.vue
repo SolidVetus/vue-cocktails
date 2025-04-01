@@ -1,6 +1,6 @@
 <template>
   <div v-if="cocktail" class="wrap">
-    <app-layout :imgUrl="cocktail.strDrinkThumb">
+    <app-layout :imgUrl="cocktail.strDrinkThumb" @slot-key="getCocktail">
       <div class="wrapper">
         <div class="info">
           <div class="title">{{ cocktail.strDrink }}</div>
