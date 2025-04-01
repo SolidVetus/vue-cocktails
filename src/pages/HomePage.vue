@@ -1,13 +1,13 @@
 <template>
   <app-layout :backFunc="removeIngredient" :is-back-button-visible="!!ingredient">
     <div class="wrapper">
-      <div v-if="!ingredient" class="info">
-        <div class="title">Choose your drink</div>
+      <div v-if="!ingredients || !cocktails || !ingredient" class="info">
+        <div class="title">{{ $t('choose_drink') }}</div>
         <div class="select-wrapper">
           <el-select
             v-model="ingredient"
             class="select"
-            placeholder="Choose main ingredient"
+            :placeholder="$t('choose_ingredient')"
             size="large"
             filterable
             allow-create
@@ -21,13 +21,12 @@
           </el-select>
         </div>
         <div class="text">
-          Try our delicious cocktail recipes for every occasion. Find delicious cocktail recipes by
-          ingredient through our cocktail generator.
+          {{ $t('cocktails_diclaimer') }}
         </div>
         <img class="img" src="../assets/img/cocktails.png" alt="cocktails" />
       </div>
       <div v-else class="info">
-        <div class="title">COCKTAILS WITH {{ ingredient }}</div>
+        <div class="title">{{ $t('cocktails_with', { ingredient }) }}</div>
         <ul class="cocktails">
           <cocktail-thumb
             v-for="cocktail in cocktails"
@@ -58,10 +57,13 @@ const removeIngredient = () => {
 .select-wrapper {
   text-align: center;
   padding-top: 50px;
+  width: auto;
 }
 
 .select {
-  width: 220px;
+  width: auto;
+  min-width: 220px;
+  max-width: 100%;
 }
 
 .text {
